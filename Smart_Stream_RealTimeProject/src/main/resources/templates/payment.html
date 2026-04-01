@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SmartStream | Secure Payment</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Normal card box */
+        .card {
+            width: 420px;
+            padding: 35px;
+            background: #ffffff;  /* solid white */
+            border-radius: 10px;  /* small rounded corners */
+            border: 1px solid #ccc;  /* simple border */
+            color: #000;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Payment option buttons */
+        .payment-option {
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            transition: 0.3s;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .payment-option.upi {
+            background: #1abc9c; /* greenish-blue */
+        }
+
+        .payment-option.wallet {
+            background: #e67e22; /* orange */
+        }
+
+        .payment-option.paytm {
+            background: #3498db; /* blue */
+        }
+
+        /* Simple hover effect */
+        .payment-option:hover {
+            opacity: 0.85;
+        }
+    </style>
+
+    <script>
+        function selectPayment(method){
+            let confirmPayment = confirm("Are you sure you want to pay ₹499 using " + method + "?");
+            if(confirmPayment){
+                alert("Payment Successful ✅");
+                window.location.href = "[[@{/songs/list}]]";  // Thymeleaf redirect
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+<div class="card">
+    <h2>Upgrade to Premium</h2>
+    <p>Amount: ₹499</p>
+
+    <!-- Payment options -->
+    <div class="payment-option upi" onclick="selectPayment('UPI')">
+        Pay via UPI
+    </div>
+
+    <div class="payment-option wallet" onclick="selectPayment('Wallet')">
+        Wallet Payment
+    </div>
+
+    <div class="payment-option paytm" onclick="selectPayment('Paytm')">
+        Paytm
+    </div>
+</div>
+
+</body>
+</html>

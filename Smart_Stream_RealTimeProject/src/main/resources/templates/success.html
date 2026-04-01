@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Success | SmartStream</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Dark overlay */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+}
+
+/* Success Card */
+.success-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 40, 80, 0.8);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    width: 400px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+.success-box h2 {
+    margin-bottom: 15px;
+}
+
+.success-box p {
+    margin-bottom: 25px;
+    color: #ccc;
+}
+
+button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+</style>
+
+</head>
+<body>
+
+<div class="success-box">
+    <h2>🎉 Registration Successful!</h2>
+    <p>Your SmartStream account has been created successfully.</p>
+
+    <a href="/api/login">
+        <button>Go to Login</button>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartStream | Add Song/Video</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Full-page background image */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        /* Centered container */
+        .container {
+            max-width: 500px;
+            margin: 100px auto;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+
+        /* Input styling */
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffd700;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ffc107;
+        }
+
+        /* Link styling */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Song/Video</h1>
+        <form th:action="@{/songs/save}" method="post" enctype="multipart/form-data">
+            <input type="text" name="titel" placeholder="Title" required>
+            <!-- Accept audio & video files -->
+            <input type="file" name="mediaFile" accept="audio/*,video/*" required>
+            <button type="submit">Upload</button>
+        </form>
+        <a href="/songs/list">⬅ Go to Song/Video List</a>
+    </div>
+</body>
+</html>

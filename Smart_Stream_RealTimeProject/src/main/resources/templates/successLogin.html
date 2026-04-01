@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SmartStream | Welcome</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; font-family: "Poppins", sans-serif; margin:0; padding:0; }
+
+/* Body & Background */
+body {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                      url("https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1950&q=80");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    padding: 20px 0;
+}
+
+/* Welcome Title */
+h1.welcome {
+    font-size: 56px;
+    margin-bottom: 40px;
+    color: #00f260; /* single color text */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+}
+
+/* Card Section */
+.card {
+    padding: 25px 30px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.95); /* White background */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    max-width: 700px;
+    margin: 30px auto;
+    text-align: left;
+    color: #000; /* text color inside card */
+}
+
+/* Buttons */
+a {
+    display: block;
+    margin: 12px 0;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 242, 96, 0.3);
+}
+
+.go-premium {
+    color: white;
+    background: #00f260; /* only one solid color */
+}
+
+/* Premium Content Box (paragraph-style) */
+.premium-content {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 15px;
+    background: #fff; /* white box */
+    border-radius: 10px;
+    color: #000;
+    max-height: 400px;
+    overflow-y: auto; /* scrollable if content exceeds box */
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="welcome">Welcome to SmartStream!</h1>
+
+<!-- Non-Premium Users -->
+<div class="card" th:if="${session.isPremium == false}">
+    <a th:href="@{/api/paymentPage(userId=${session.userId})}" class="go-premium">
+        Go Premium
+    </a>
+
+    <div class="premium-content">
+        <h3>Why Go Premium?</h3>
+        <p>SmartStream Premium is designed to give you the ultimate music experience.</p>
+        <p>By upgrading, you will:</p>
+        <p>Access over 1000 high-quality tracks, stream music , enjoy uninterrupted listening, create unlimited playlists, and get early access to new releases and exclusive tracks.</p>
+        <p>Upgrade now to unlock all features and enjoy the best music experience tailored just for you!</p>
+		<p>Create and manage unlimited playlists to organize your favorite songs.</p>
+		<p>Access exclusive tracks and new releases before everyone else.</p>
+		<p>Enjoy an ad-free, uninterrupted music experience.</p>
+		<p>Keep exploring and enjoy your music!</p>
+    </div>
+</div>
+
+<!-- Premium Users -->
+<div class="card" th:if="${session.isPremium == true}">
+    <a th:href="@{/songs/list}" class="go-premium">
+        🎵 Listen to Songs
+    </a>
+</div>
+
+<footer>
+    @ 2026 SmartStream | Developed by Premji Partiban
+</footer>
+
+</body>
+</html>
